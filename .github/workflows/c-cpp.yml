@@ -1,0 +1,21 @@
+name: Build libmain.so
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: cmake & make
+    - uses: actions/upload-artifact@v4
+      with:
+        name: unity kit
+        path: libmain.so
